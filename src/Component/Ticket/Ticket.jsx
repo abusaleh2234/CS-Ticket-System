@@ -1,10 +1,15 @@
 import React from 'react';
 
-const Ticket = ({ticket}) => {
-    console.log(ticket);
-    
+const Ticket = ({ticket,setProgress,progress}) => {
+    // console.log(ticket);
+    const { title,status,priority,id,description,customer,createdAt} = ticket
+
+    const handleProgressStatus = (ticket) => {
+        const newProgress = [...progress,ticket]
+        setProgress(newProgress)
+    }
     return (
-        <div>
+        <div className='cursor-pointer' onClick={()=>handleProgressStatus(ticket)}>
             {/* <div className="bg-gray-100 min-h-screen p-6">
                 <div className="grid md:grid-cols-2 gap-6"> */}
 
@@ -12,30 +17,43 @@ const Ticket = ({ticket}) => {
 
                         <div className="flex justify-between items-start">
                             <h3 className="text-sm font-semibold text-gray-800">
-                                Login Issues - Can't Access Account
+                               {title}
                             </h3>
+                            {status ==="Open" &&
                             <span className="flex items-center gap-1 bg-green-100 text-green-600 text-xs font-medium px-3 py-1 rounded-full">
                                 <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                                Open
-                            </span>
+                                {status}
+                            </span> || 
+                            status ==="In Progress" &&
+                            <span className="flex items-center gap-1 bg-[#F8F3B9] text-[#9C7700] text-xs font-medium px-3 py-1 rounded-full">
+                                <span className="w-2 h-2 bg-[#FEBB0C] rounded-full"></span>
+                                {status}
+                            </span>}
+                            
                         </div>
 
                         <p className="text-xs text-gray-500 mt-3 leading-relaxed">
-                            Customer is unable to log in to their account. They've tried resetting their password multiple times but still...
+                            {description}
                         </p>
 
                         <div className="flex justify-between items-center mt-4 text-xs">
 
                             <div className="flex items-center gap-3">
-                                <span className="text-gray-400">#1001</span>
+                                <span className="text-gray-400">#{id}</span>
+                                {priority ==="High" && 
                                 <span className="text-red-500 font-semibold uppercase">
-                                    High Priority
-                                </span>
+                                    {priority} Priority
+                                </span> || priority ==="Medium" && <span className="text-[#FEBB0C] font-semibold uppercase">
+                                    {priority} Priority
+                                </span> || priority ==="Low" && <span className="text-green-600 font-semibold uppercase">
+                                    {priority} Priority
+                                </span>}
+                                
                             </div>
 
                             <div className="flex items-center gap-3 text-gray-500">
-                                <span>John Smith</span>
-                                <span>11/15/2024</span>
+                                <span>{customer}</span>
+                                <span>{createdAt}</span>
                             </div>
 
                         </div>

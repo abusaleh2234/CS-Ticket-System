@@ -1,5 +1,5 @@
 
-import { Suspense } from 'react'
+import { Suspense, useState } from 'react'
 import './App.css'
 import Banner from './Component/Banner/Banner'
 import Navbar from './Component/Navbar/Navbar'
@@ -10,23 +10,31 @@ const ticketsFetch = async () => {
   const res = await fetch("tickets.json")
   return res.json()
 }
+const ticketsPromise = ticketsFetch()
 function App() {
-  const ticketsPromise = ticketsFetch()
+  const [progress, setProgress] = useState([])
+  const [resolved, setResolved] = useState([])
+  console.log(resolved);
+  
+// console.log(progress);
 
   return (
     <>
       <Navbar></Navbar>
       <div className="bg-[#F5F5F5] ">
-        <div className=" max-w-7xl mx-auto">
-          <Banner></Banner>
+        <div className=" max-w-7xl mx-auto px-2 md:px-0">
+          <Banner progress={progress} resolved={resolved}></Banner>
 
-          <div className="flex gap-5">
+          <div className="flex md:flex-row flex-col-reverse gap-5">
             <Suspense fallback={<h2>Tickets is loading ....</h2>}>
-              <Tickets ticketsPromise={ticketsPromise}></Tickets>
+              <Tickets 
+              progress={progress} 
+              setProgress={setProgress} 
+              ticketsPromise={ticketsPromise}></Tickets>
             </Suspense>
 
-            <div className="w-1/3">
-              <Status></Status>
+            <div className=" w-full md:w-1/3">
+              <Status setResolved={setResolved} resolved={resolved} progress={progress} ></Status>
             </div>
 
           </div>
