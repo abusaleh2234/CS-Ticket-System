@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 
 const Status = ({ progress, setResolved, resolved,setProgress,setProcessedTickets,processedTickets }) => {
     const handleResolved = (task) => {
@@ -10,13 +11,14 @@ const Status = ({ progress, setResolved, resolved,setProgress,setProcessedTicket
         setProgress(remainingProgress);
         const remainingProcessedTicket = processedTickets.filter(ticket => ticket.id !== task.id)
         setProcessedTickets(remainingProcessedTicket)
+        toast("Your Task is Resolved")
     }
     console.log(resolved);
     return (
         <div className='space-y-4'>
             <div className="">
                 <div className="">
-                    <h3 className="text-2xl font-medium text-[#34485A]">Task Status</h3>
+                    <h3 className="text-2xl font-medium text-[#34485A] pb-2">Task Status</h3>
                     {/* <p className='text-xs'>Select a ticket to add to Task Status</p> */}
                 </div>
                 <div className="space-y-3">
@@ -33,7 +35,7 @@ const Status = ({ progress, setResolved, resolved,setProgress,setProcessedTicket
             </div>
             <div className="">
                 <div className="">
-                    <h3 className="text-2xl font-medium text-[#34485A]">Resolved Task</h3>
+                    <h3 className="text-2xl font-medium text-[#34485A] pb-2">Resolved Task</h3>
                     {/* <p className='text-xs'>No resolved tasks yet.</p> */}
                 </div>
                 <div className="space-y-3">

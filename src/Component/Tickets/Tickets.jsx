@@ -8,7 +8,7 @@ const Tickets = ({processedTickets,setProgress, progress}) => {
     
     return (
         <div className="w-full md:min-w-2/3">
-            <h3 className="text-2xl  font-medium text-[#34485A]">Customer Tickets</h3>
+            <h3 className="text-2xl  font-medium text-[#34485A] pb-4">Customer Tickets</h3>
             <div className="grid md:grid-cols-2 gap-6">
                 {
                     

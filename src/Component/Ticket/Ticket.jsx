@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 
 const Ticket = ({ticket,setProgress,progress}) => {
     // console.log(ticket);
@@ -9,6 +10,7 @@ const Ticket = ({ticket,setProgress,progress}) => {
         // const progressTicket = {title,newStatus,priority,id,description,customer,createdAt}
         const newProgress = [...progress,ticket]
         setProgress(newProgress)
+        toast("Ticket In Progress")
     }
     return (
         <div className='cursor-pointer' onClick={()=>handleProgressStatus()}>

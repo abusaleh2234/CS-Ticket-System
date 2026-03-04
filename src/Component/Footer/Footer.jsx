@@ -36,7 +36,9 @@ const Footer = () => {
                     <li className="list-none"><a className="text-[#A1A1AA]">support@cst.com</a></li>
                 </div>
             </div>
-            <div className=""></div>
+            <div className="border-t">
+                <p className="text-white text-center p-5">© 2025 CS — Ticket System. All rights reserved.</p>
+            </div>
         </div>
     );
 };

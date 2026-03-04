@@ -6,6 +6,7 @@ import Navbar from './Component/Navbar/Navbar'
 import Tickets from './Component/Tickets/Tickets'
 import Status from './Component/Status/Status'
 import Footer from './Component/Footer/Footer'
+import { ToastContainer } from 'react-toastify'
 
 const ticketsFetch = async () => {
   const res = await fetch("tickets.json")
@@ -29,7 +30,7 @@ function App() {
         <div className=" max-w-7xl mx-auto px-2 md:px-0">
           <Banner progress={progress} resolved={resolved}></Banner>
 
-          <div className="flex md:flex-row flex-col-reverse gap-5">
+          <div className="flex md:flex-row flex-col-reverse gap-5 pb-10">
             <Suspense fallback={<h2>Tickets is loading ....</h2>}>
               <Tickets 
               progress={progress} 
@@ -53,6 +54,7 @@ function App() {
           <Footer></Footer>
         </div>
       </div>
+      <ToastContainer />
     </>
   )
 }
