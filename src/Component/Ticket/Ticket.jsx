@@ -4,14 +4,15 @@ const Ticket = ({ticket,setProgress,progress}) => {
     // console.log(ticket);
     const { title,status,priority,id,description,customer,createdAt} = ticket
 
-    const handleProgressStatus = (ticket) => {
+    const handleProgressStatus = () => {
+        // const newStatus = "In Progress"
+        // const progressTicket = {title,newStatus,priority,id,description,customer,createdAt}
         const newProgress = [...progress,ticket]
         setProgress(newProgress)
     }
     return (
-        <div className='cursor-pointer' onClick={()=>handleProgressStatus(ticket)}>
-            {/* <div className="bg-gray-100 min-h-screen p-6">
-                <div className="grid md:grid-cols-2 gap-6"> */}
+        <div className='cursor-pointer' onClick={()=>handleProgressStatus()}>
+
 
                     <div className="bg-white p-5 rounded-xl shadow-sm hover:shadow-md transition duration-300">
 
@@ -61,8 +62,7 @@ const Ticket = ({ticket,setProgress,progress}) => {
 
 
                 </div>
-        //     </div>
-        // </div>
+
     );
 };
 

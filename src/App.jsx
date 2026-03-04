@@ -14,7 +14,7 @@ const ticketsPromise = ticketsFetch()
 function App() {
   const [progress, setProgress] = useState([])
   const [resolved, setResolved] = useState([])
-  console.log(resolved);
+  // console.log(resolved);
   
 // console.log(progress);
 
@@ -34,7 +34,7 @@ function App() {
             </Suspense>
 
             <div className=" w-full md:w-1/3">
-              <Status setResolved={setResolved} resolved={resolved} progress={progress} ></Status>
+              <Status setProgress={setProgress} setResolved={setResolved} resolved={resolved} progress={progress} ></Status>
             </div>
 
           </div>
