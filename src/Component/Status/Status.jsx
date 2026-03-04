@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Status = ({ progress, setResolved, resolved,setProgress }) => {
+const Status = ({ progress, setResolved, resolved,setProgress,setProcessedTickets,processedTickets }) => {
     const handleResolved = (task) => {
         const newTasks = [...resolved, task]
         setResolved(newTasks)
@@ -8,7 +8,8 @@ const Status = ({ progress, setResolved, resolved,setProgress }) => {
         
         const remainingProgress = progress.filter(Task => Task.id !== task.id)
         setProgress(remainingProgress);
-
+        const remainingProcessedTicket = processedTickets.filter(ticket => ticket.id !== task.id)
+        setProcessedTickets(remainingProcessedTicket)
     }
     console.log(resolved);
     return (

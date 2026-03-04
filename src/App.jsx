@@ -1,10 +1,11 @@
 
-import { Suspense, useState } from 'react'
+import { Suspense, use, useState } from 'react'
 import './App.css'
 import Banner from './Component/Banner/Banner'
 import Navbar from './Component/Navbar/Navbar'
 import Tickets from './Component/Tickets/Tickets'
 import Status from './Component/Status/Status'
+import Footer from './Component/Footer/Footer'
 
 const ticketsFetch = async () => {
   const res = await fetch("tickets.json")
@@ -12,6 +13,9 @@ const ticketsFetch = async () => {
 }
 const ticketsPromise = ticketsFetch()
 function App() {
+  const ticketsData = use(ticketsPromise)
+  const [processedTickets, setProcessedTickets] = useState(ticketsData)
+  
   const [progress, setProgress] = useState([])
   const [resolved, setResolved] = useState([])
   // console.log(resolved);
@@ -30,16 +34,24 @@ function App() {
               <Tickets 
               progress={progress} 
               setProgress={setProgress} 
-              ticketsPromise={ticketsPromise}></Tickets>
+              processedTickets={processedTickets}></Tickets>
             </Suspense>
 
             <div className=" w-full md:w-1/3">
-              <Status setProgress={setProgress} setResolved={setResolved} resolved={resolved} progress={progress} ></Status>
+              <Status 
+              setProcessedTickets={setProcessedTickets}
+              processedTickets={processedTickets}
+              setProgress={setProgress} 
+              setResolved={setResolved} 
+              resolved={resolved} 
+              progress={progress} ></Status>
             </div>
 
           </div>
         </div>
-
+        <div className="bg-black">
+          <Footer></Footer>
+        </div>
       </div>
     </>
   )

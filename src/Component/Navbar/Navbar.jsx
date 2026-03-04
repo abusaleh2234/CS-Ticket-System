@@ -2,7 +2,7 @@ import React from 'react';
 
 const Navbar = () => {
     return (
-        <div className='bg-base-100 shadow-sm '>
+        <div className='bg-base-100 shadow-sm'>
             <div className="navbar justify-between  max-w-7xl mx-auto">
                 <div className="navbar-start w-auto">
                     <a className="text-xl font-bold">CS — Ticket System</a>
