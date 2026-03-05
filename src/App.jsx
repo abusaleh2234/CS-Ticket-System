@@ -28,8 +28,10 @@ function App() {
       <Navbar></Navbar>
       <div className="bg-[#F5F5F5] ">
         <div className=" max-w-7xl mx-auto px-2 md:px-0">
+          {/* banner section */}
           <Banner progress={progress} resolved={resolved}></Banner>
 
+            {/* Customer ticket */}
           <div className="flex md:flex-row flex-col-reverse gap-5 pb-10">
             <Suspense fallback={<h2>Tickets is loading ....</h2>}>
               <Tickets 
@@ -37,7 +39,7 @@ function App() {
               setProgress={setProgress} 
               processedTickets={processedTickets}></Tickets>
             </Suspense>
-
+              {/* Status section */}
             <div className=" w-full md:w-1/3">
               <Status 
               setProcessedTickets={setProcessedTickets}
@@ -50,6 +52,7 @@ function App() {
 
           </div>
         </div>
+        {/* footer Section */}
         <div className="bg-black">
           <Footer></Footer>
         </div>
