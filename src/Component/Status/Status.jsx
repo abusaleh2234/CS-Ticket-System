@@ -13,7 +13,7 @@ const Status = ({ progress, setResolved, resolved,setProgress,setProcessedTicket
         setProcessedTickets(remainingProcessedTicket)
         toast("Your Task is Resolved")
     }
-    console.log(resolved);
+    // console.log(resolved);
     return (
         <div className='space-y-4'>
             <div className="">
